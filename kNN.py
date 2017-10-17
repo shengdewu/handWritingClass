@@ -19,14 +19,14 @@ class kNN(object):
 
         sortLabel = {}
         for i in range(k):
-            label = sample[index[i]]
-            sortLabel[label] = sortLabel.get(label, 0) + 1
+            lb = label[index[i]]
+            sortLabel[lb] = sortLabel.get(lb, 0) + 1
         result = sorted(sortLabel.items(), key=lambda item:item[1], reverse = True)
         return result[0][0]
 
     def distance(self, src, dst):
-        value = src - dst
-        value = value **2
-        value.sum(axis=1)
+        diff = src - dst
+        diff = diff **2
+        value = diff.sum(axis=1)
         value = np.sqrt(value)
         return value
